@@ -1,3 +1,7 @@
+ver 1.9:
+	Initial AVDTP parser support.
+	Various minor fixes and cleanups.
+
 ver 1.8:
 	Support Bluetooth 1.2 HCI commands and events.
 	Decode RFCOMM credit based flow control.

@@ -1,5 +1,5 @@
 # Note that this is NOT a relocatable package
-%define ver      1.8
+%define ver      1.9
 %define RELEASE  1
 %define rel      %{?CUSTOM_RELEASE} %{!?CUSTOM_RELEASE:%RELEASE}
 %define prefix   /usr
@@ -35,7 +35,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %build
 automake
-CFLAGS="$RPM_OPT_FLAGS" ./configure --enable-test --prefix=%{prefix} --mandir=%{_mandir} --sysconfdir=%{_sysconfdir}
+CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=%{prefix} --mandir=%{_mandir} --sysconfdir=%{_sysconfdir}
 make
 
 %install
