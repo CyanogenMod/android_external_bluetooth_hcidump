@@ -1,6 +1,7 @@
 ver 1.0:
 	L2CAP fragment reassembly.
-	RFCOMM and SDP parsing.
+	RFCOMM parser (Wayne Lee).
+	SDP parser (Ricky Yuen). 
 	Simple filtering.
 
 ver 0.2:

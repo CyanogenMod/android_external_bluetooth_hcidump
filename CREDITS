@@ -5,3 +5,6 @@ Maxim Krasnyansky <maxk@qualcomm.com>
 
 Wayne Lee <waynelee@qualcomm.com>
 	RFCOMM parser.
+
+Ricky Yuen <ryuen@qualcomm.com>
+	SDP parser.
