@@ -1,3 +1,7 @@
+ver 0.3:
+	L2CAP fragment reassembly.
+	RFCOMM parsing.
+
 ver 0.2:
 	L2CAP parsing. PSM tracking.
 	HCI events and commands parsing.

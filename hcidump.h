@@ -38,7 +38,7 @@ struct dump_hdr {
 } __attribute__ ((packed));
 #define DUMP_HDR_SIZE 4
 
-#define SNAP_LEN (1 + HCI_ACL_HDR_SIZE + L2CAP_HDR_SIZE + L2CAP_CMD_HDR_SIZE + 60)
+#define SNAP_LEN HCI_MAX_FRAME_SIZE
 
 static inline int read_n(int fd, char *buf, int len)
 {
