@@ -1,0 +1,21 @@
+dnl
+dnl  $Id$
+dnl
+dnl Process this file with autoconf to produce a configure script.
+dnl
+AC_INIT()
+
+AC_PROG_CC
+AC_PROG_AWK
+AC_PROG_YACC
+AC_PROG_LEX
+AC_PROG_INSTALL
+
+dnl Build release name
+changequote(<,>)
+REL=`echo 'substr($Name,0)$' | tr -d '$: \-' | sed 's/^[A-Za-z]*//' | sed 's/\_/\./'`
+VER="$REL `date '+%m/%d/%Y'`"
+changequote([,])
+AC_DEFINE_UNQUOTED(VERSION, "$VER")
+
+AC_OUTPUT(Makefile)

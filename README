@@ -1,0 +1,27 @@
+HCIDump - HCI packet analyzer 
+Copyright (C) 2000-2001 Maxim Krasnyansky <maxk@qualcomm.com>
+
+1. Compilation and Installation.
+
+In order to compile HCIDump you need following software packages:
+  - Linux Bluetooth protocol stack (BlueZ)
+  - GCC compiler
+
+To configure HCIDump run:
+  ./configure
+ 
+Configure automatically searches for all required components and packages. 
+
+To compile and install run:
+  make install
+
+2.0 Information
+
+Mailing lists:
+	bluez-users@lists.sourceforge.net - BlueZ general questions and discussions
+	bluez-devel@lists.sourceforge.net - BlueZ development 
+
+For additional information about the project visit BlueZ web site:
+	http://bluez.sf.net/hcidump
+ 
+Maxim Krasnyansky <maxk@qualcomm.com> 
