@@ -34,9 +34,11 @@ enum {
 struct dump_hdr {
 	__u16	len;
 	__u8	in;
-	__u8	reserv;
+	__u8	pad;
+	__u32	ts_sec;
+	__u32   ts_usec;
 } __attribute__ ((packed));
-#define DUMP_HDR_SIZE 4
+#define DUMP_HDR_SIZE (sizeof(struct dump_hdr))
 
 #define SNAP_LEN HCI_MAX_FRAME_SIZE
 
