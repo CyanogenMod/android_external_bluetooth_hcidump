@@ -22,14 +22,15 @@ AC_PROG_INSTALL
 AM_PROG_LIBTOOL
 
 AC_ARG_WITH(bluez-libs,
-	--with-bluez-libs=DIR  BlueZ libraries and header files,
-	[
-	    BLUEZ_INCDIR="$withval"/include
-	    BLUEZ_LIBDIR="$withval"/src
-	],[
-	    BLUEZ_INCDIR='../libs/include /usr/include/bluetooth'
-	    BLUEZ_LIBDIR='../libs/src /usr/lib'
-	]
+	--with-bluez-libs=DIR     BlueZ libraries,
+	BLUEZ_LIBDIR="$withval",
+	BLUEZ_LIBDIR='../libs/src /usr/lib'
+)
+
+AC_ARG_WITH(bluez-includes,
+	--with-bluez-includes=DIR BlueZ header files,
+	BLUEZ_INCDIR="$withval",
+	BLUEZ_INCDIR='../libs/include /usr/include/bluetooth'
 )
 
 AC_SEARCH_HEADERS(bluetooth.h, $BLUEZ_INCDIR,,
