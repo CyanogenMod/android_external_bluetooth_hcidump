@@ -45,7 +45,7 @@
 #include <pwd.h>
 #include <argp.h>
     
-#include "parser.h"
+#include "parser/parser.h"
 #include "hcidump.h"
 
 /* Default options */
