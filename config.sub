@@ -772,7 +772,7 @@ case $os in
 	# This must come after -sysvr4.
 	-sysv*)
 		;;
-	-uClinux)
+	-uClinux | -uclinux)
 		;;
 	-xenix)
 		os=-xenix

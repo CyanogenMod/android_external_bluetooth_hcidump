@@ -7,18 +7,30 @@ error_t argp_parse (const struct argp *__restrict __argp,
 			   unsigned __flags, int *__restrict __arg_index,
 			   void *__restrict __input)
 {
-	char *o, opts[20];
+#define MAX_OPTS 40
+#define MAX_OPTS_SIZE (MAX_OPTS * 2 + 1)
+	char *o, opts[MAX_OPTS_SIZE];
 	const struct argp_option *ao;
 	int opt;
 	struct argp_state state = { 0 };
 
-	for (o = &opts[0], ao = __argp->options; 
-		(ao != NULL) && (ao->name != NULL); o++, ao++) {
-		*o = (char)(ao->key);
-		if (ao->arg != NULL)
-			*++o = ':';
+	o = &opts[0];
+	ao = __argp->options;
+	if (ao != NULL) {
+		for (; ao->name != NULL; ao++) {
+			if (ao->key) {
+				if (o - opts >= MAX_OPTS_SIZE - 2) {
+					fprintf(stderr, "Too many options.\n");
+					break;
+				}
+				*o++ = (char)(ao->key);
+				if (ao->arg != NULL) {
+					*o++ = ':';
+				}
+			}
+		}
 	}
-	*++o = '0';
+	*o = '0';
 	state.root_argp = __argp;
 	state.name = __argv[0];
 	state.argv = __argv;

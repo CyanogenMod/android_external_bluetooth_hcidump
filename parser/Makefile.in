@@ -31,16 +31,19 @@ LIB  = libparser
 LIB_VER = 0.1
 
 LIB_A   = $(LIB).a
-LIBS    = $(LIB_A)
+APPLIBS    = $(LIB_A)
 
 CC      = @CC@
 LD	= @LD@
 AR	= @AR@
 INSTALL = @INSTALL@
 
-CFLAGS  = @CFLAGS@ -Wall
+DEFS = @DEFS@
 
-all: $(LIBS) 
+CFLAGS  = @CFLAGS@ $(DEFS)
+CPPFLAGS = @CPPFLAGS@
+
+all: $(APPLIBS) 
 
 $(LIB_A): $(OBJS)
 	$(AR) -rs $(LIB_A) $(OBJS)
@@ -48,7 +51,9 @@ $(LIB_A): $(OBJS)
 $(OBJS): $(HDRS)
 
 clean:
-	rm -f *.o *~ *.so.* *.so $(LIBS)
+	-rm -f *.o *~ *.so.* *.so $(APPLIBS)
 
 distclean: clean
-	rm -f $(CONFIGURE_FILES)
+	-rm -f $(CONFIGURE_FILES)
+	-rm -rf autom4te*.cache
+

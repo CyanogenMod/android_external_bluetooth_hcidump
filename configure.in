@@ -8,8 +8,10 @@ AC_SUBST(PARTS)
 
 AC_PROG_CC
 AC_PROG_INSTALL
+AC_CHECK_TOOL(LD, ld, ld)
+AC_CHECK_TOOL(AR, ar, ar)
 
-AC_CONFIG_SUBDIRS(parser)
+CFLAGS="-Wall -g -O2"
 
 PARTS=
 
@@ -26,4 +28,4 @@ VER="$REL `date '+%m/%d/%Y'`"
 changequote([,])
 AC_DEFINE_UNQUOTED(VERSION, "$VER")
 
-AC_OUTPUT(Makefile)
+AC_OUTPUT(Makefile parser/Makefile)

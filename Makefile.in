@@ -21,7 +21,7 @@
 #
 #  $Id$
 #
-
+.EXPORT_ALL_VARIABLES:
 CONFIGURE_FILES = Makefile config.status config.cache config.h config.log
 
 UTILS   = hcidump
@@ -36,12 +36,15 @@ ETCDIR  = /etc
 CC	= @CC@
 INSTALL = @INSTALL@
 
-DEFS    = @DEFS@
+DEFS = @DEFS@
 
-CFLAGS  = @CFLAGS@ $(DEFS) -Wall -I. -I./parser
-LDFLAGS = @LDFLAGS@ -L./parser
+# optimization is necessary to compile the "extern inline" functions
+CFLAGS  = @CFLAGS@ $(DEFS) -I . -I ./parser
+CPPFLAGS = @CPPFLAGS@
 
-LIBS    = @LIBS@ -lparser
+LDFLAGS = @LDFLAGS@
+
+LIBS    = -L./parser -lparser @LIBS@
 
 PARTS   = @PARTS@
 
@@ -51,17 +54,20 @@ $(PARSER): force
 	@$(MAKE) -C parser all
 
 hcidump: $(PARSER) $(PARTS) $(DUMP_OBJS)
-	$(CC) $(LDFLAGS) $(DUMP_OBJS) $(PARTS) -o hcidump $(LIBS)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(DUMP_OBJS) $(PARTS) \
+		-o hcidump $(LIBS)
 
 install: all
 	$(INSTALL) -m 755 -o root -g root $(UTILS) $(SBINDIR)
 
 clean:
-	@$(MAKE) -C parser clean
-	rm -f *.o *.tab.* *.lex.* $(UTILS)
+	@$(MAKE) -C parser clean || true
+	-rm -f *.o *.tab.* *.lex.* $(UTILS)
 
 distclean: clean
-	@$(MAKE) -C parser distclean
-	rm -f $(CONFIGURE_FILES)
+	@$(MAKE) -C parser distclean || true
+	-rm -f bluetooth
+	-rm -f $(CONFIGURE_FILES)
+	-rm -rf autom4te*.cache
 
 force:;
