@@ -43,7 +43,7 @@ LDFLAGS = -L ./parser -lbluetooth -lparser
 
 all: $(UTILS)
 
-$(PARSER):
+$(PARSER): force
 	make -C parser all
 
 $(UTILS): $(PARSER)
@@ -58,3 +58,5 @@ clean:
 distclean: clean
 	make -C parser distclean
 	rm -f $(CONFIGURE_FILES)
+
+force:;
