@@ -23,7 +23,7 @@
 #
 CONFIGURE_FILES = Makefile config.status config.cache config.h config.log
 
-UTILS   = hcidump
+UTILS   = hcidump hcitool
 
 SBINDIR = /usr/sbin
 BINDIR  = /bin
