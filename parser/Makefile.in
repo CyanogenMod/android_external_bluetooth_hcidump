@@ -25,7 +25,7 @@
 #
 CONFIGURE_FILES = Makefile config.status config.cache config.h config.log
 
-OBJS = parser.o hci.o l2cap.o
+OBJS = parser.o hci.o l2cap.o rfcomm.o
 HDRS = parser.h
 LIB  = libparser
 LIB_VER = 0.1
