@@ -21,10 +21,14 @@
 #
 #  $Id$
 #
+
 CONFIGURE_FILES = Makefile config.status config.cache config.h config.log
 
 UTILS   = hcidump hcitool
 PARSER  = parser/libparser.a
+
+DUMP_OBJS = hcidump.o
+TOOL_OBJS = hcitool.o
 
 SBINDIR = /usr/sbin
 BINDIR  = /bin
@@ -33,30 +37,35 @@ ETCDIR  = /etc
 CC	= @CC@
 INSTALL = @INSTALL@
 
-DEFS = @DEFS@
+DEFS    = @DEFS@
 
-CFLAGS  = @CFLAGS@ $(DEFS) -Wall -I ./parser
-LDFLAGS = -L ./parser -lbluetooth -lparser
+CFLAGS  = @CFLAGS@ $(DEFS) -Wall -I. -I./parser
+LDFLAGS = @LDFLAGS@ -L./parser
 
-%:%.c
-	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS)
+LIBS    = @LIBS@ -lparser
+
+PARTS   = @PARTS@
 
 all: $(UTILS)
 
 $(PARSER): force
-	@make -C parser all
+	@$(MAKE) -C parser all
 
-$(UTILS): $(PARSER)
+hcidump: $(PARSER) $(PARTS) $(DUMP_OBJS)
+	$(CC) $(LDFLAGS) $(DUMP_OBJS) $(PARTS) -o hcidump $(LIBS)
+
+hcitool: $(PARSER) $(PARTS) $(TOOL_OBJS)
+	$(CC) $(LDFLAGS) $(TOOL_OBJS) $(PARTS) -o hcitool $(LIBS)
 
 install: all
 	$(INSTALL) -m 755 -o root -g root $(UTILS) $(SBINDIR)
 
 clean:
-	@make -C parser clean
+	@$(MAKE) -C parser clean
 	rm -f *.o *.tab.* *.lex.* $(UTILS)
 
 distclean: clean
-	@make -C parser distclean
+	@$(MAKE) -C parser distclean
 	rm -f $(CONFIGURE_FILES)
 
 force:;

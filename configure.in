@@ -4,11 +4,20 @@ dnl
 dnl Process this file with autoconf to produce a configure script.
 dnl
 AC_INIT()
+AC_SUBST(PARTS)
 
 AC_PROG_CC
 AC_PROG_INSTALL
 
 AC_CONFIG_SUBDIRS(parser)
+
+PARTS=
+
+AC_CHECK_HEADER(argp.h,, PARTS="$PARTS argp.o")
+
+AC_CHECK_LIB(bluetooth, hci_open_dev, 
+	LIBS="$LIBS -lbluetooth",
+	AC_MSG_ERROR(Bluetooth library not found))
 
 dnl Build release name
 changequote(<,>)
