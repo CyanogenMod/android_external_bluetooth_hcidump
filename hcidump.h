@@ -56,7 +56,7 @@ static inline int read_n(int fd, char *buf, int len)
 		len -= w; buf += w; t += w;
 	}
 	return t;
-}   
+}
 
 static inline int write_n(int fd, char *buf, int len)
 {
