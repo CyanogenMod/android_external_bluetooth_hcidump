@@ -2,7 +2,7 @@ dnl
 dnl  $Id$
 dnl
 
-AC_DEFUN(AC_PREFIX_BLUEZ, [
+AC_DEFUN([AC_PREFIX_BLUEZ], [
 	AC_PREFIX_DEFAULT(/usr)
 
 	if test "$prefix" = "NONE"; then
@@ -22,7 +22,7 @@ AC_DEFUN(AC_PREFIX_BLUEZ, [
 	fi
 ])
 
-AC_DEFUN(AC_PATH_BLUEZ, [
+AC_DEFUN([AC_PATH_BLUEZ], [
 	AC_ARG_WITH(bluez, [  --with-bluez=DIR        BlueZ library is installed in DIR], [
 		if (test "$withval" = "yes"); then
 			bluez_includes=$bluez_prefix/include
