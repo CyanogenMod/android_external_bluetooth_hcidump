@@ -10,4 +10,7 @@ Ricky Yuen <ryuen@qualcomm.com>
 	SDP parser.
 
 Takashi Sasai <sasai@sm.sony.co.jp>
-	BNEP parser
+	BNEP parser.
+
+Marcel Holtmann <marcel@holtmann.org>
+	CMTP parser.
