@@ -1,4 +1,5 @@
 ver 1.7:
+	HCRP parser support.
 	CAPI parser support.
 	CMTP reassembly support.
 	Support for dynamic PSM's.
