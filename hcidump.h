@@ -1,4 +1,4 @@
-/* 
+/*
 	HCIDump - HCI packet analyzer	
 	Copyright (C) 2000-2001 Maxim Krasnyansky <maxk@qualcomm.com>
 
@@ -31,11 +31,11 @@ enum {
 };
 
 struct dump_hdr {
-	__u16	len;
-	__u8	in;
-	__u8	pad;
-	__u32	ts_sec;
-	__u32   ts_usec;
+	uint16_t	len;
+	uint8_t		in;
+	uint8_t		pad;
+	uint32_t	ts_sec;
+	uint32_t	ts_usec;
 } __attribute__ ((packed));
 #define DUMP_HDR_SIZE (sizeof(struct dump_hdr))
 
