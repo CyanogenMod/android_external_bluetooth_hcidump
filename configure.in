@@ -6,10 +6,9 @@ dnl
 AC_INIT()
 
 AC_PROG_CC
-AC_PROG_AWK
-AC_PROG_YACC
-AC_PROG_LEX
 AC_PROG_INSTALL
+
+AC_CONFIG_SUBDIRS(parser)
 
 dnl Build release name
 changequote(<,>)

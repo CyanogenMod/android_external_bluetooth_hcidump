@@ -1,6 +1,8 @@
 # 
-#	HCIDump - HCI packet analyzer
-#	Copyright (C) 2000-2001 Maxim Krasnyansky <maxk@qualcomm.com>
+#	BlueZ - Bluetooth protocol stack for Linux
+#	Copyright (C) 2000-2001 Qualcomm Incorporated
+#
+#	Written 2000,2001 by Maxim Krasnyansky <maxk@qualcomm.com>
 #
 #	This program is free software; you can redistribute it and/or modify
 #	it under the terms of the GNU General Public License version 2 as
@@ -23,38 +25,27 @@
 #
 CONFIGURE_FILES = Makefile config.status config.cache config.h config.log
 
-UTILS   = hcidump hcitool
-PARSER  = parser/libparser.a
+OBJS = parser.o hci.o l2cap.o
+LIB  = libparser
+LIB_VER = 0.1
 
-SBINDIR = /usr/sbin
-BINDIR  = /bin
-ETCDIR  = /etc
+LIB_A   = $(LIB).a
+LIBS    = $(LIB_A)
 
-CC	= @CC@
+CC      = @CC@
+LD	= @LD@
+AR	= @AR@
 INSTALL = @INSTALL@
 
-DEFS = @DEFS@
+CFLAGS  = @CFLAGS@ -Wall
 
-CFLAGS  = @CFLAGS@ $(DEFS) -Wall -I ./parser
-LDFLAGS = -L ./parser -lbluetooth -lparser
+all: $(LIBS) 
 
-%:%.c
-	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS)
-
-all: $(UTILS)
-
-$(PARSER):
-	make -C parser all
-
-$(UTILS): $(PARSER)
-
-install: utils
-	$(INSTALL) -m 755 -o root -g root $(UTILS) $(SBINDIR)
+$(LIB_A): $(OBJS)
+	$(AR) -rs $(LIB_A) $(OBJS)
 
 clean:
-	make -C parser clean
-	rm -f *.o *.tab.* *.lex.* $(UTILS)
+	rm -f *.o *~ *.so.* *.so $(LIBS)
 
 distclean: clean
-	make -C parser distclean
 	rm -f $(CONFIGURE_FILES)
