@@ -13,7 +13,7 @@ In order to compile HCIdump you need following software packages:
 	- GCC compiler
 
 To configure run:
-	./configure --prefix=/usr --sysconfdir=/etc
+	./configure --prefix=/usr --mandir=/usr/share/man
  
 Configure automatically searches for all required components and packages. 
 
