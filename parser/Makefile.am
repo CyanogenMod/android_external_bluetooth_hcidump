@@ -10,4 +10,6 @@ libparser_a_SOURCES = \
 	bnep.c cmtp.c hidp.c hcrp.c avdtp.c \
 	capi.c
 
+AM_CFLAGS = @BLUEZ_CFLAGS@
+
 MAINTAINERCLEANFILES = Makefile.in

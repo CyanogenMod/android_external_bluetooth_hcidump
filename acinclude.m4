@@ -5,7 +5,7 @@ dnl
 AC_DEFUN([AC_PREFIX_BLUEZ], [
 	AC_PREFIX_DEFAULT(/usr)
 
-	if test "$prefix" = "NONE"; then
+	if (test "${prefix}" = "NONE"); then
 		dnl no prefix and no sysconfdir, so default to /etc
 		if test "$sysconfdir" = '${prefix}/etc'; then
 			AC_SUBST([sysconfdir], ['/etc'])
@@ -16,51 +16,43 @@ AC_DEFUN([AC_PREFIX_BLUEZ], [
 			AC_SUBST([mandir], ['${prefix}/share/man'])
 		fi
 
-		bluez_prefix="$ac_default_prefix"
-	else
-		bluez_prefix="$prefix"
+		prefix="${ac_default_prefix}"
 	fi
 ])
 
 AC_DEFUN([AC_PATH_BLUEZ], [
 	AC_ARG_WITH(bluez, [  --with-bluez=DIR        BlueZ library is installed in DIR], [
-		if (test "$withval" = "yes"); then
-			bluez_includes=$bluez_prefix/include
-			bluez_libraries=$bluez_prefix/lib
+		if (test "${withval}" = "yes"); then
+			bluez_prefix=${prefix}
 		else
-			bluez_includes=$withval/include
-			bluez_libraries=$withval/lib
+			bluez_prefix=${withval}
 		fi
 	])
 
-	BLUEZ_INCLUDES=""
-	BLUEZ_LDFLAGS=""
-	BLUEZ_LIBS=""
-
-	ac_save_CFLAGS=$CFLAGS
-	test -n "$bluez_includes" && CFLAGS="$CFLAGS -I$bluez_includes"
-
+	ac_save_CPPFLAGS=$CPPFLAGS
 	ac_save_LDFLAGS=$LDFLAGS
-	test -n "$bluez_libraries" && LDFLAGS="$LDFLAGS -L$bluez_libraries"
 
-	AC_CHECK_HEADER(bluetooth/bluetooth.h,,
-		AC_MSG_ERROR(Bluetooth header files not found))
+	BLUEZ_CFLAGS=""
+	test -d "${bluez_prefix}/include" && BLUEZ_CFLAGS="$BLUEZ_CFLAGS -I${bluez_prefix}/include"
 
-	AC_CHECK_LIB(bluetooth, hci_open_dev,
-		BLUEZ_LIBS="$BLUEZ_LIBS -lbluetooth",
-		AC_MSG_ERROR(Bluetooth library not found))
+	CPPFLAGS="$CPPFLAGS $BLUEZ_CFLAGS"
+	AC_CHECK_HEADER(bluetooth/bluetooth.h,, AC_MSG_ERROR(Bluetooth header files not found))
 
-	AC_CHECK_LIB(sdp, sdp_connect,
-		BLUEZ_LIBS="$BLUEZ_LIBS -lsdp")
+	BLUEZ_LIBS=""
+	if (test "${prefix}" = "${bluez_prefix}"); then
+		test -d "${libdir}" && BLUEZ_LIBS="$BLUEZ_LIBS -L${libdir}"
+	else
+		test -d "${bluez_prefix}/lib64" && BLUEZ_LIBS="$BLUEZ_LIBS -L${bluez_prefix}/lib64"
+		test -d "${bluez_prefix}/lib" && BLUEZ_LIBS="$BLUEZ_LIBS -L${bluez_prefix}/lib"
+	fi
 
-	CFLAGS=$ac_save_CFLAGS
-	test -n "$bluez_includes" && BLUEZ_INCLUDES="-I$bluez_includes"
+	LDFLAGS="$LDFLAGS $BLUEZ_LIBS"
+	AC_CHECK_LIB(bluetooth, hci_open_dev, BLUEZ_LIBS="$BLUEZ_LIBS -lbluetooth", AC_MSG_ERROR(Bluetooth library not found))
+	AC_CHECK_LIB(sdp, sdp_connect, BLUEZ_LIBS="$BLUEZ_LIBS -lsdp")
 
+	CPPFLAGS=$ac_save_CPPFLAGS
 	LDFLAGS=$ac_save_LDFLAGS
-	test -n "$bluez_libraries" && BLUEZ_LDFLAGS="-L$bluez_libraries"
-	test -n "$bluez_libraries" && BLUEZ_LIBS="-L$bluez_libraries $BLUEZ_LIBS"
 
-	AC_SUBST(BLUEZ_INCLUDES)
-	AC_SUBST(BLUEZ_LDFLAGS)
+	AC_SUBST(BLUEZ_CFLAGS)
 	AC_SUBST(BLUEZ_LIBS)
 ])
