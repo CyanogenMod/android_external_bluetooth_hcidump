@@ -1,5 +1,6 @@
 Maxim Krasnyansky <maxk@qualcomm.com>
 	Original author.
+	L2CAP parser.
 
 Wayne Lee <waynelee@qualcomm.com>
 	RFCOMM parser.
@@ -12,6 +13,8 @@ Takashi Sasai <sasai@sm.sony.co.jp>
 
 Marcel Holtmann <marcel@holtmann.org>
 	Primary maintainer.
+	LMP parser.
+	HCI parser.
 	CMTP parser.
 	HIDP parser.
 	HCRP parser.
