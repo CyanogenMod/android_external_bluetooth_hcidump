@@ -152,6 +152,29 @@ static void dump(unsigned char *buf, int count)
 	}
 }
 
+static void decode(unsigned char *buf, int count)
+{
+	uint8_t id, status, channel;
+	uint16_t num, len;
+	uint32_t time;
+
+	if (count < 7)
+		return;
+
+	id = buf[0];
+	num = ntohs(bt_get_unaligned((uint16_t *) (buf + 1)));
+	len = btohs(bt_get_unaligned((uint16_t *) (buf + 3)));
+
+	status  = buf[5];
+	time    = ntohl(bt_get_unaligned((uint32_t *) (buf + 6)));
+	channel = buf[10];
+
+	printf("BPA: id %d num %d status 0x%02x time %d channel %2d len %d\n",
+		id, num, status, time, channel, len - 6);
+
+	dump(buf + 11, count - 11);
+}
+
 static void process_frames(int dev)
 {
 	struct sigaction sa;
@@ -229,7 +252,7 @@ static void process_frames(int dev)
 		if (buf[0] != 0xff)
 			continue;
 
-		dump(buf + 1, len - 1);
+		decode(buf + 1, len - 1);
 	}
 
 	hci_close_dev(dd);
