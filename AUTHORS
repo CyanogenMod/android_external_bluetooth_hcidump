@@ -16,3 +16,4 @@ Marcel Holtmann <marcel@holtmann.org>
 	HIDP parser.
 	HCRP parser.
 	CAPI parser.
+	AVDTP parser.
