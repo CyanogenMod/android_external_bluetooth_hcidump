@@ -4,8 +4,6 @@
 
 SUBDIRS := parser
 
-mandir = $(prefix)/share/man
-
 sbin_PROGRAMS = hcidump
 
 LDADD = parser/libparser.a

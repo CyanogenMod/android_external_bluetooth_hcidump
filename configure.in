@@ -1,40 +1,25 @@
 dnl
 dnl  $Id$
 dnl
-dnl Process this file with autoconf to produce a configure script.
-dnl
+
+AC_PREREQ(2.50)
 AC_INIT()
 
 AM_INIT_AUTOMAKE(bluez-hcidump, 1.8)
+AM_CONFIG_HEADER(config.h)
+
+AM_MAINTAINER_MODE
+
+AC_PREFIX_BLUEZ
 
 CFLAGS="-Wall -g -O2"
 
-AC_PREFIX_DEFAULT(/usr)
+AC_LANG_C
 
 AC_PROG_CC
 AC_PROG_INSTALL
 AC_PROG_RANLIB
 
-AC_ARG_WITH(bluez-libs,
-	--with-bluez-libs=DIR     BlueZ libraries,
-	BLUEZ_LIBDIR="$withval",
-	BLUEZ_LIBDIR='../libs/src /usr/lib'
-)
-
-AC_ARG_WITH(bluez-includes,
-	--with-bluez-includes=DIR BlueZ header files,
-	BLUEZ_INCDIR="$withval",
-	BLUEZ_INCDIR='../libs/include /usr/include'
-)
-
-AC_SEARCH_HEADERS(bluetooth/bluetooth.h, $BLUEZ_INCDIR,,
-	AC_MSG_ERROR(Bluetooth headers not found.
-		Please install bluez-libs package.)
-)
-
-AC_SEARCH_LIB(bluetooth, hci_open_dev, $BLUEZ_LIBDIR,,
-	AC_MSG_ERROR(Bluetooth library not found.
-		Please compile and install bluez-libs package.)
-)
+AC_PATH_BLUEZ
 
 AC_OUTPUT(Makefile parser/Makefile)
