@@ -1,6 +1,8 @@
 ver 0.3:
 	L2CAP fragment reassembly.
 	RFCOMM parsing.
+	SDP parsing.
+	Simple filtering.
 
 ver 0.2:
 	L2CAP parsing. PSM tracking.
