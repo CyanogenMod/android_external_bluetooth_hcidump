@@ -49,6 +49,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-, root, root)
 
 %{_sbindir}/hcidump
+%{_mandir}/man8/hcidump.8.gz
 
 %doc AUTHORS COPYING INSTALL ChangeLog NEWS README
 
