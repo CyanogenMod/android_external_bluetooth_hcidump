@@ -9,7 +9,7 @@ mandir = $(prefix)/share/man
 sbin_PROGRAMS = hcidump
 
 hcidump_SOURCES = hcidump.c hcidump.h
-hcidump_LDADD   = parser/libparser.la
+hcidump_LDADD   = parser/libparser.a
 
 man_MANS = hcidump.8
 
