@@ -15,5 +15,6 @@ Marcel Holtmann <marcel@holtmann.org>
 	CMTP parser.
 	HIDP parser.
 	HCRP parser.
+	OBEX parser.
 	CAPI parser.
 	AVDTP parser.

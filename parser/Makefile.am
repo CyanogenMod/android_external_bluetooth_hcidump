@@ -8,7 +8,7 @@ libparser_a_SOURCES = \
 	parser.c parser.h hci.c l2cap.c \
 	rfcomm.c rfcomm.h sdp.c sdp.h \
 	bnep.c cmtp.c hidp.c hcrp.c avdtp.c \
-	capi.c csr.c
+	obex.c capi.c csr.c
 
 AM_CFLAGS = @BLUEZ_CFLAGS@
 
