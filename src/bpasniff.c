@@ -264,7 +264,7 @@ static void usage(void)
 {
 	printf("bpasniff - Utility for the BPA 100/105 sniffers\n\n");
 	printf("Usage:\n"
-		"\tcsrsniff [-i <dev>] <bdaddr>\n");
+		"\tbpasniff [-i <dev>] <master-bdaddr>\n");
 }
 
 static struct option main_options[] = {
