@@ -26,7 +26,6 @@
 /* Modes */
 enum {
 	PARSE,
-	RAW,
 	READ,
 	WRITE
 };

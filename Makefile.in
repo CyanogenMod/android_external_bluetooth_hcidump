@@ -24,11 +24,10 @@
 
 CONFIGURE_FILES = Makefile config.status config.cache config.h config.log
 
-UTILS   = hcidump hcitool
+UTILS   = hcidump
 PARSER  = parser/libparser.a
 
 DUMP_OBJS = hcidump.o
-TOOL_OBJS = hcitool.o
 
 SBINDIR = /usr/sbin
 BINDIR  = /bin
@@ -53,9 +52,6 @@ $(PARSER): force
 
 hcidump: $(PARSER) $(PARTS) $(DUMP_OBJS)
 	$(CC) $(LDFLAGS) $(DUMP_OBJS) $(PARTS) -o hcidump $(LIBS)
-
-hcitool: $(PARSER) $(PARTS) $(TOOL_OBJS)
-	$(CC) $(LDFLAGS) $(TOOL_OBJS) $(PARTS) -o hcitool $(LIBS)
 
 install: all
 	$(INSTALL) -m 755 -o root -g root $(UTILS) $(SBINDIR)
