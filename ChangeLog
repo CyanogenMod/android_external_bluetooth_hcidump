@@ -1,3 +1,8 @@
+ver 1.7:
+	CAPI parser support.
+	CMTP reassembly support.
+	Support for dynamic PSM's.
+
 ver 1.6:
 	HIDP parser support.
 	Various fixes for the SDP parser.
