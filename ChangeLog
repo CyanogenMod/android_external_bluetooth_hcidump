@@ -1,3 +1,9 @@
+ver 1.16:
+	Add UUID translation for WAP.
+	Fix display of UUID 128.
+	Fix display of L2CAP config hint bit and QoS option.
+	Fix parsing of SDP continuation state.
+
 ver 1.15:
 	Update the L2CAP channel counting routine.
 	Fix SBC codec specific decoding.
