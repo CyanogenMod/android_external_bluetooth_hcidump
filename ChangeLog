@@ -1,3 +1,8 @@
+ver 1.14:
+	Count the number of L2CAP channels per PSM.
+	Differ between the AVDTP signal and media channel.
+	Add full decoding of the AVDTP signal channel information.
+
 ver 1.13:
 	Update many UUID to text translations.
 	Add support for sending and receiving dumps over TCP.
