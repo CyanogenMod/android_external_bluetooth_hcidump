@@ -48,7 +48,7 @@ $(PARSER):
 
 $(UTILS): $(PARSER)
 
-install: utils
+install: all
 	$(INSTALL) -m 755 -o root -g root $(UTILS) $(SBINDIR)
 
 clean:
