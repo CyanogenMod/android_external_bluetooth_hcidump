@@ -1,14 +1,14 @@
 BlueZ - Bluetooth protocol stack for Linux
 
 Copyright (C) 2000-2002  Maxim Krasnyansky <maxk@qualcomm.com>
-Copyright (C) 2003-2004  Marcel Holtmann <marcel@holtmann.org>
+Copyright (C) 2003-2005  Marcel Holtmann <marcel@holtmann.org>
 
-Bluetooth packet analyzer - HCIdump
+Bluetooth packet analyzer
 
 
 1. Compilation and installation
 
-In order to compile HCIdump you need following software packages:
+In order to compile Bluetooth analyzer you need following software packages:
 	- Linux Bluetooth protocol stack (BlueZ)
 	- GCC compiler
 
