@@ -91,7 +91,7 @@ AC_DEFUN([AC_ARG_BLUEZ], [
 		debug_enable=${enableval}
 	])
 
-	AC_ARG_ENABLE(pie, AC_HELP_STRING([--enable-pie], [enable position independent executables option]), [
+	AC_ARG_ENABLE(pie, AC_HELP_STRING([--enable-pie], [enable position independent executables flag]), [
 		pie_enable=${enableval}
 	])
 
