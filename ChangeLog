@@ -1,3 +1,11 @@
+ver 1.17:
+	Add support for HCI verbose decoding.
+	Add support for L2CAP verbose decoding.
+	Add first version of the BPA sniffer utility.
+
+	Note:
+	This version needs at least bluez-libs-2.15
+
 ver 1.16:
 	Add UUID translation for WAP.
 	Fix display of UUID 128.
