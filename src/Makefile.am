@@ -1,0 +1,7 @@
+#  
+#  $Id$
+#
+
+AM_CFLAGS = @BLUEZ_CFLAGS@
+
+MAINTAINERCLEANFILES = Makefile.in

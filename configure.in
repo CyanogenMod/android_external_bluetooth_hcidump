@@ -23,4 +23,4 @@ AC_PATH_BLUEZ
 
 AC_ARG_BLUEZ
 
-AC_OUTPUT(Makefile parser/Makefile)
+AC_OUTPUT(Makefile src/Makefile parser/Makefile)
