@@ -1,3 +1,7 @@
+ver 1.6:
+	HIDP parser support.
+	Various fixes for the SDP parser.
+
 ver 1.5:
 	Included man page for hcidump.
 	Minor fix for HCI grabber.
