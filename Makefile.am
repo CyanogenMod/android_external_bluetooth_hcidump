@@ -2,7 +2,7 @@
 #  $Id$
 #
 
-SUBDIRS = parser
+SUBDIRS := parser
 
 sbin_PROGRAMS = hcidump
 

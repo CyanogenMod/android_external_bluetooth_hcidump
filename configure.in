@@ -27,8 +27,8 @@ AC_ARG_WITH(bluez-libs,
 	    BLUEZ_INCDIR="$withval"/include
 	    BLUEZ_LIBDIR="$withval"/src
 	],[
-	    BLUEZ_INCDIR='../libs/include ../bluez-libs*/include /usr/include/bluetooth'
-	    BLUEZ_LIBDIR='../libs/src ../bluez-libs*/src /usr/lib'
+	    BLUEZ_INCDIR='../libs/include /usr/include/bluetooth'
+	    BLUEZ_LIBDIR='../libs/src /usr/lib'
 	]
 )
 

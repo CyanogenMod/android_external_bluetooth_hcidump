@@ -42,6 +42,7 @@ AC_DEFUN( AC_SEARCH_HEADERS,
     AC_MSG_CHECKING("for $1") 
     ac_hdr_found=no
     for p in $2; do
+	test -d $p || continue;
 	p=`cd $p && pwd`
 	AC_TEST_FILES($1, $p, 
 	    [ 
