@@ -1,6 +1,7 @@
 ver 1.1:
-	SCO support.
-	Support for time stamps.
+	SCO support. 
+	Support for frame time stamps.
+	RAW mode and other minor fixes.
 
 ver 1.0:
 	L2CAP fragment reassembly.
