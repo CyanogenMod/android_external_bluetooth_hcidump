@@ -1,3 +1,14 @@
+ver 1.11:
+	Trace company id from the chip manufacturer.
+	Support extended dump functionality.
+	Use the L2CAP_CONF_RFC_MODE value.
+	Use bt_get_unaligned() for unaligned access.
+	Make compiling with debug information optional.
+	Don't override CFLAGS from configure.
+
+	Note:
+	This version needs at least bluez-libs-2.10
+
 ver 1.10:
 	Fix display of L2CAP CID.
 	Show L2CAP config values only when they are present.
