@@ -9,3 +9,5 @@ libparser_a_SOURCES = \
 	rfcomm.c rfcomm.h sdp.c sdp.h \
 	bnep.c cmtp.c hidp.c hcrp.c avdtp.c \
 	capi.c
+
+MAINTAINERCLEANFILES = Makefile.in
