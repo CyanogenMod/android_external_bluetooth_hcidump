@@ -42,6 +42,4 @@ AC_SEARCH_LIB(bluetooth, hci_open_dev, $BLUEZ_LIBDIR,,
 		Please compile and install bluez-libs package.)
 )
 
-AC_ADD_DIRLEVEL(CFLAGS CPPFLAGS LDFLAGS LIBS)
-
 AC_OUTPUT(Makefile parser/Makefile)
