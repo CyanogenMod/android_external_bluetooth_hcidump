@@ -1,3 +1,10 @@
+ver 1.19:
+	Fix error message decoding.
+	Add IAC decoding support.
+	Add LMP parser support.
+	Add BCCMD decoding support.
+	Add L2CAP retransmission and flow control decoding.
+
 ver 1.18:
 	Fix declaration of the SDP data structures.
 	Extend the HCI verbose decoding support.
