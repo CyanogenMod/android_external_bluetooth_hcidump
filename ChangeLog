@@ -1,6 +1,10 @@
 ver 0.2:
+	L2CAP parsing. PSM tracking.
+	HCI events and commands parsing.
+	Packet parser moved to unified library (libparser).
 	HCI socket filter support.
-	Improved packet parser and output format.
+	Improved command line option parsing.
+	Improved output format.
 
 ver 0.1:
 	Initial implementation.
