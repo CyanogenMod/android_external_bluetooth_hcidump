@@ -1,3 +1,7 @@
+ver 1.18:
+	Fix declaration of the SDP data structures.
+	Extend the HCI verbose decoding support.
+
 ver 1.17:
 	Add support for HCI verbose decoding.
 	Add support for L2CAP verbose decoding.
