@@ -44,7 +44,7 @@ LDFLAGS = -L ./parser -lbluetooth -lparser
 all: $(UTILS)
 
 $(PARSER): force
-	make -C parser all
+	@make -C parser all
 
 $(UTILS): $(PARSER)
 
@@ -52,11 +52,11 @@ install: all
 	$(INSTALL) -m 755 -o root -g root $(UTILS) $(SBINDIR)
 
 clean:
-	make -C parser clean
+	@make -C parser clean
 	rm -f *.o *.tab.* *.lex.* $(UTILS)
 
 distclean: clean
-	make -C parser distclean
+	@make -C parser distclean
 	rm -f $(CONFIGURE_FILES)
 
 force:;
