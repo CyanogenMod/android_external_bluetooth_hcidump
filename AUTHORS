@@ -1,6 +1,5 @@
 Maxim Krasnyansky <maxk@qualcomm.com>
 	Original author.
-	Primary maintainer.
 
 Wayne Lee <waynelee@qualcomm.com>
 	RFCOMM parser.
@@ -12,6 +11,7 @@ Takashi Sasai <sasai@sm.sony.co.jp>
 	BNEP parser.
 
 Marcel Holtmann <marcel@holtmann.org>
+	Primary maintainer.
 	CMTP parser.
 	HIDP parser.
 	CAPI parser.
