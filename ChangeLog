@@ -1,3 +1,8 @@
+ver 1.13:
+	Update many UUID to text translations.
+	Add support for sending and receiving dumps over TCP.
+	Add support for the vendor packets of the Digianswer BPA.
+
 ver 1.12:
 	Fix whitespace stuff for extended dump.
 	Add support for dynamic RFCOMM channels.
