@@ -1,3 +1,8 @@
+ver 1.12:
+	Fix whitespace stuff for extended dump.
+	Add support for dynamic RFCOMM channels.
+	Add initial OBEX parser support.
+
 ver 1.11:
 	Trace company id from the chip manufacturer.
 	Support extended dump functionality.
