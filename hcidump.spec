@@ -12,9 +12,9 @@ Copyright: GPL
 Group: Applications/System
 Vendor: Official Linux Bluetooth protocol stack
 Packager: Sebastian Frankfurt <sf@infesto.de>
-Source: http://bluez.sourceforge.net/%{name}-%{ver}.tar.gz
+Source: http://bluez.sf.net/download/%{name}-%{ver}.tar.gz
 BuildRoot: /var/tmp/%{name}-%{PACKAGE_VERSION}-root
-URL: http://bluez.sourceforge.net
+URL: http://www.bluez.org
 Docdir: %{prefix}/share/doc
 Requires: glibc >= 2.2.4
 Requires: bluez-libs >= 2.0
@@ -23,6 +23,8 @@ BuildRequires: bluez-libs >= 2.0
 
 %description
 Bluetooth protocol analyzer.
+
+The BLUETOOTH trademarks are owned by Bluetooth SIG, Inc., U.S.A.
 
 %changelog
 * Tue Aug 14 2002 Sebastian Frankfurt <sf@infesto.de>
@@ -40,7 +42,7 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make DESTDIR=$RPM_BUILD_ROOT prefix=%{prefix} confdir=%{_sysconfdir}/bluetooth mandir=%{_mandir} sysconfdir=%{_sysconfdir} install
+make DESTDIR=$RPM_BUILD_ROOT prefix=%{prefix} mandir=%{_mandir} sysconfdir=%{_sysconfdir} install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
