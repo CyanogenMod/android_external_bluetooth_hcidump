@@ -1,3 +1,9 @@
+ver 1.15:
+	Update the L2CAP channel counting routine.
+	Fix SBC codec specific decoding.
+	Fix AVDTP signal channel header decoding.
+	Add decoding for the AVDTP media channel header.
+
 ver 1.14:
 	Count the number of L2CAP channels per PSM.
 	Differ between the AVDTP signal and media channel.
