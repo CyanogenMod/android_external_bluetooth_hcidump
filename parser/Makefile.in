@@ -26,6 +26,7 @@
 CONFIGURE_FILES = Makefile config.status config.cache config.h config.log
 
 OBJS = parser.o hci.o l2cap.o
+HDRS = parser.h
 LIB  = libparser
 LIB_VER = 0.1
 
@@ -43,6 +44,8 @@ all: $(LIBS)
 
 $(LIB_A): $(OBJS)
 	$(AR) -rs $(LIB_A) $(OBJS)
+
+$(OBJS): $(HDRS)
 
 clean:
 	rm -f *.o *~ *.so.* *.so $(LIBS)
