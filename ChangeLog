@@ -1,3 +1,9 @@
+ver 1.10:
+	Fix display of L2CAP CID.
+	Show L2CAP config values only when they are present.
+	Decode L2CAP information request and response.
+	Update autoconf and automake routines.
+
 ver 1.9:
 	Initial AVDTP parser support.
 	Various minor fixes and cleanups.
@@ -10,7 +16,7 @@ ver 1.7:
 	HCRP parser support.
 	CAPI parser support.
 	CMTP reassembly support.
-	Support for dynamic PSM's.
+	Support for dynamic PSM.
 
 ver 1.6:
 	HIDP parser support.
