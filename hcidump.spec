@@ -1,10 +1,10 @@
 # Note that this is NOT a relocatable package
-%define ver      1.6
+%define ver      1.7
 %define RELEASE  1
 %define rel      %{?CUSTOM_RELEASE} %{!?CUSTOM_RELEASE:%RELEASE}
 %define prefix   /usr
 
-Summary: HCIDump - HCI protocol analyzer
+Summary: Bluetooth protocol analyzer - HCIdump
 Name: bluez-hcidump
 Version: %ver
 Release: %rel
@@ -22,7 +22,7 @@ BuildRequires: glibc >= 2.2.4
 BuildRequires: bluez-libs >= 2.0
 
 %description
-HCI protocol analyzer.
+Bluetooth protocol analyzer.
 
 %changelog
 * Tue Aug 14 2002 Sebastian Frankfurt <sf@infesto.de>
