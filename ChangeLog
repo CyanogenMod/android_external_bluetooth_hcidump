@@ -1,3 +1,10 @@
+ver 1.20:
+	Workaround for inquiry results with RSSI and page scan mode.
+	Decode almost every used HCI commands and events.
+
+	Note:
+	This version needs at least bluez-libs-2.16
+
 ver 1.19:
 	Fix error message decoding.
 	Add IAC decoding support.
