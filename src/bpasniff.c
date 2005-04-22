@@ -44,6 +44,8 @@
 
 #include <netinet/in.h>
 
+#include "parser/parser.h"
+
 static volatile sig_atomic_t __io_canceled = 0;
 
 static void sig_hup(int sig)
@@ -128,35 +130,57 @@ static int enable_sync(int dd, uint8_t enable, bdaddr_t *bdaddr)
 	return 0;
 }
 
-static void dump(unsigned char *buf, int count)
+static char *type2str(uint8_t type)
 {
-	int i, n = 0, size;
-
-	while (count > 0) {
-		printf("%04x: ", n);
-
-		size = count > 16 ? 16 : count;
-
-		for (i = 0; i < size; i++)
-			printf("%02x%s", buf[i], (i + 1) % 8 ? " " : "  ");
-		for (i = size; i < 16; i++)
-			printf("  %s", (i + 1) % 8 ? " " : "  ");
-
-		for (i = 0; i < size; i++)
-			printf("%1c", isprint(buf[i]) ? buf[i] : '.');
-		printf("\n");
-
-		buf   += size;
-		count -= size;
-		n     += size;
+	switch (type) {
+	case 0x00:
+		return "NULL";
+	case 0x01:
+		return "POLL";
+	case 0x02:
+		return "FHS";
+	case 0x03:
+		return "DM1";
+	case 0x04:
+		return "DH1";
+	case 0x05:
+		return "HV1";
+	case 0x06:
+		return "HV2";
+	case 0x07:
+		return "HV3";
+	case 0x08:
+		return "DV";
+	case 0x09:
+		return "AUX1";
+	case 0x0a:
+		return "DM3";
+	case 0x0b:
+		return "DH3";
+	case 0x0c:
+		return "EV4";
+	case 0x0d:
+		return "EV5";
+	case 0x0e:
+		return "DM5";
+	case 0x0f:
+		return "DH5";
+	case 0xff:
+		return "ID";
+	default:
+		return "UNK";
 	}
 }
 
 static void decode(unsigned char *buf, int count)
 {
+	struct frame frm;
 	uint8_t id, status, channel;
 	uint16_t num, len;
 	uint32_t time;
+	uint8_t type, addr, temp, hdr;
+	uint8_t flow, arqn, seqn, hec, llid, pflow;
+	uint16_t plen;
 
 	if (count < 7)
 		return;
@@ -169,10 +193,72 @@ static void decode(unsigned char *buf, int count)
 	time    = ntohl(bt_get_unaligned((uint32_t *) (buf + 6)));
 	channel = buf[10];
 
+	if (len < 8)
+		return;
+
+	type = (len < 7) ? 0xff : bt_get_unaligned((uint8_t *) (buf + 11));
+
+	if (type < 2)
+		return;
+
+	p_indent(-1, NULL);
+
+	memset(&frm, 0, sizeof(frm));
+	frm.data     = buf + 12;
+	frm.data_len = count - 12;
+	frm.ptr      = frm.data;
+	frm.len      = frm.data_len;
+	frm.in       = 0;
+	frm.master   = 0;
+	frm.handle   = 0;
+	frm.flags    = 0;
+
+	p_indent(0, &frm);
+
 	printf("BPA: id %d num %d status 0x%02x time %d channel %2d len %d\n",
 		id, num, status, time, channel, len - 6);
 
-	dump(buf + 11, count - 11);
+	if (type < 3) {
+		printf("  %s\n", type2str(type));
+		raw_dump(1, &frm);
+		return;
+	}
+
+	addr = bt_get_unaligned((uint8_t *) (buf + 12));
+	temp = bt_get_unaligned((uint8_t *) (buf + 13));
+	flow = (temp & 0x04) >> 2;
+	arqn = (temp & 0x02) >> 1;
+	seqn = (temp & 0x01);
+	hec  = bt_get_unaligned((uint8_t *) (buf + 14));
+
+	hdr = bt_get_unaligned((uint8_t *) (buf + 20));
+	plen  = ((hdr & 0x10) >> 4) | ((hdr & 0x08) >> 2) | (hdr & 0x04) | ((hdr & 0x02) << 2) | ((hdr & 0x01) << 4);
+	pflow = ((hdr & 0x20) >> 5);
+	llid = ((hdr & 0x80) >> 7) | ((hdr & 0x40) >> 5);
+	hdr = bt_get_unaligned((uint8_t *) (buf + 21));
+	plen = plen | ((hdr & 0x80) >> 2) | (hdr & 0x40) | ((hdr & 0x20) << 2) | ((hdr & 0x08) << 4);
+
+	p_indent(0, &frm);
+
+	printf("%s: addr 0x%02x flow %d arqn %d seqn %d hec 0x%02x llid %d pflow %d plen %d\n",
+		type2str(type), addr, flow, arqn, seqn, hec, llid, pflow, plen);
+
+	if (type == 0x03 && llid == 3) {
+		memset(&frm, 0, sizeof(frm));
+		frm.data     = buf + 22;
+		frm.data_len = plen;
+		frm.ptr      = frm.data;
+		frm.len      = frm.data_len;
+		frm.in       = 0;
+		frm.master   = 1;
+		frm.handle   = 0;
+		frm.flags    = llid;
+
+		lmp_dump(1, &frm);
+		return;
+	}
+
+	raw_dump(1, &frm);
 }
 
 static void process_frames(int dev)
@@ -366,6 +452,8 @@ int main(int argc, char *argv[])
 		hci_close_dev(dd);
 		exit(1);
 	}
+
+	init_parser(DUMP_EXT | DUMP_VERBOSE, ~0L, 0, DEFAULT_COMPID);
 
 	process_frames(dev);
 
