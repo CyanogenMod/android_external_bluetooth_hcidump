@@ -1,3 +1,12 @@
+ver 1.21:
+	Clear L2CAP states when receiving the HCI disconnect.
+	Make the OBEX parser aware of that RFCOMM is a stream.
+	Update HCI verbose decoding routines.
+	Add CSR verbose decoding support.
+
+	Note:
+	This version needs at least bluez-libs-2.17
+
 ver 1.20:
 	Workaround for inquiry results with RSSI and page scan mode.
 	Decode almost every used HCI commands and events.
