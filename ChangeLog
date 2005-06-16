@@ -1,3 +1,10 @@
+ver 1.22:
+	Only do verbose decoding when requested.
+	Fix number of completed packets decoding.
+	Improve the decoding of CSR vendor commands and events.
+	Use human readable timestamps.
+	Add support for the BTSnoop file format.
+
 ver 1.21:
 	Clear L2CAP states when receiving the HCI disconnect.
 	Make the OBEX parser aware of that RFCOMM is a stream.
