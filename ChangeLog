@@ -1,3 +1,13 @@
+ver 1.23:
+	Add decoding support for inquiry scan type.
+	Fix connection accept timeout and scan enable decoding.
+	Show human readable timestamps only in verbose decoding mode.
+	Dump raw BNEP payload only in non-verbose decoding mode.
+	Update CSR BCCMD support and correct uint32 decoding.
+
+	Note:
+	This version needs at least bluez-libs-2.18
+
 ver 1.22:
 	Only do verbose decoding when requested.
 	Fix number of completed packets decoding.
