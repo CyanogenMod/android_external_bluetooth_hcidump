@@ -80,7 +80,7 @@ static int read_revision(int dd, char *revision, int size)
 	}
 
 	if (revision)
-		strncpy(revision, buf + 1, size);
+		strncpy(revision, (char *) (buf + 1), size);
 
 	return 0;
 }
