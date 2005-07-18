@@ -1,3 +1,7 @@
+ver 1.24:
+	Allow selection of system device.
+	Handle system events and commands.
+
 ver 1.23:
 	Add decoding support for inquiry scan type.
 	Fix connection accept timeout and scan enable decoding.
