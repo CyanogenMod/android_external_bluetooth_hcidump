@@ -1,3 +1,11 @@
+ver 1.25:
+	Add new attribute identifiers and UUID definitions.
+	Add decoding support for extended inquiry response.
+	Add more detailed BCCMD decoding.
+	
+	Note:
+	This version needs at least bluez-libs-2.20
+
 ver 1.24:
 	Allow selection of system device.
 	Handle system events and commands.
