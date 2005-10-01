@@ -453,7 +453,7 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	init_parser(DUMP_EXT | DUMP_VERBOSE, ~0L, 0, DEFAULT_COMPID);
+	init_parser(DUMP_EXT | DUMP_VERBOSE, ~0L, 0, DEFAULT_COMPID, -1);
 
 	process_frames(dev);
 
