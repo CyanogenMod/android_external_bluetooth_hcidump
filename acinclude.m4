@@ -86,8 +86,13 @@ AC_DEFUN([AC_PATH_BLUEZ], [
 ])
 
 AC_DEFUN([AC_ARG_BLUEZ], [
+	fortify_enable=yes
 	debug_enable=no
 	pie_enable=no
+
+	AC_ARG_ENABLE(fortify, AC_HELP_STRING([--disable-fortify], [disable compile time buffer checks]), [
+		fortify_enable=${enableval}
+	])
 
 	AC_ARG_ENABLE(debug, AC_HELP_STRING([--enable-debug], [enable compiling with debugging information]), [
 		debug_enable=${enableval}
@@ -96,6 +101,10 @@ AC_DEFUN([AC_ARG_BLUEZ], [
 	AC_ARG_ENABLE(pie, AC_HELP_STRING([--enable-pie], [enable position independent executables flag]), [
 		pie_enable=${enableval}
 	])
+
+	if (test "${fortify_enable}" = "yes"); then
+		CFLAGS="$CFLAGS -D_FORTIFY_SOURCE=2"
+	fi
 
 	if (test "${debug_enable}" = "yes" && test "${ac_cv_prog_cc_g}" = "yes"); then
 		CFLAGS="$CFLAGS -g"
