@@ -1,23 +1,5 @@
 Maxim Krasnyansky <maxk@qualcomm.com>
-	Original author.
-	L2CAP parser.
-
-Wayne Lee <waynelee@qualcomm.com>
-	RFCOMM parser.
-
-Ricky Yuen <ryuen@qualcomm.com>
-	SDP parser.
-
-Takashi Sasai <sasai@sm.sony.co.jp>
-	BNEP parser.
-
 Marcel Holtmann <marcel@holtmann.org>
-	Primary maintainer.
-	LMP parser.
-	HCI parser.
-	CMTP parser.
-	HIDP parser.
-	HCRP parser.
-	OBEX parser.
-	CAPI parser.
-	AVDTP parser.
+Wayne Lee <waynelee@qualcomm.com>
+Ricky Yuen <ryuen@qualcomm.com>
+Takashi Sasai <sasai@sm.sony.co.jp>
