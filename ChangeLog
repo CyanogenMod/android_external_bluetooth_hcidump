@@ -1,3 +1,10 @@
+ver 1.27:
+	Decode the extended inquiry response payload.
+	Update HCI_DEV_NONE frame format.
+	Update the CSR PS key handling.
+	Add another bunch LMP message decodings.
+	Add compile time buffer checks (FORTIFY SOURCE).
+
 ver 1.26:
 	Fix memory leak with lmp_vertostr() function.
 	Fix FHS packet decoding for slave connections.
