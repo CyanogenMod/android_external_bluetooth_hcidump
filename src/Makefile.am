@@ -11,6 +11,6 @@ AM_CFLAGS = @BLUEZ_CFLAGS@
 
 INCLUDES = -I$(top_srcdir)
 
-EXTRA_DIST = $(man_MANS)
+EXTRA_DIST = $(man_MANS) magic.btsnoop
 
 MAINTAINERCLEANFILES = Makefile.in
