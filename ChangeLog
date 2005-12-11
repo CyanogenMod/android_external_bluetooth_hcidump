@@ -1,3 +1,14 @@
+ver 1.28:
+	Add missing UUID definitions and translations.
+	Add option to disable vendor commands and events.
+	Add decoding for hold mode, sniff mode and park state.
+	Add decoding for sniff subrate command complete event.
+	Decode class of device and BD_ADDR for inquiry filter.
+	Make it possible to obfuscate pin codes and link keys.
+
+	Note:
+	This version needs at least bluez-libs-2.23
+
 ver 1.27:
 	Decode the extended inquiry response payload.
 	Update HCI_DEV_NONE frame format.
