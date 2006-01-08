@@ -1,3 +1,11 @@
+ver 1.29:
+	Obfuscate the BD_ADDR if no vendor events are requested.
+	Decode and display binary strings correctly.
+	Allow null-terminated text strings.
+	Add definitions for Apple Agent.
+	Add skeleton for AVCTP parser.
+	Add skeleton for PPP parser.
+
 ver 1.28:
 	Add missing UUID definitions and translations.
 	Add option to disable vendor commands and events.
