@@ -1,3 +1,12 @@
+ver 1.30:
+	Add decoding for pause encryption feature.
+	Add generic RFCOMM streaming helpers.
+	Add HDLC decoding support to the PPP parser.
+	Add unslip support and basic protocol decoding.
+	Add PPP extraction support.
+	Move TCP/IP decoders into a separate file.
+	Fix DoS problem of the L2CAP parser.
+
 ver 1.29:
 	Obfuscate the BD_ADDR if no vendor events are requested.
 	Decode and display binary strings correctly.
