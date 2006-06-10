@@ -1,3 +1,11 @@
+ver 1.31:
+	Add Ericsson LMP decoding support.
+	Update sniff subrating decoding.
+	Update UUID and attribute definitions.
+
+	Note:
+	This version needs at least bluez-libs-3.0
+
 ver 1.30:
 	Add decoding for pause encryption feature.
 	Add generic RFCOMM streaming helpers.
