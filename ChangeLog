@@ -1,3 +1,13 @@
+ver 1.32:
+	Add decoding for link supervision timeout change event.
+	Add decoding for host controller to host flow control setting.
+	Add decoding for host number of completed packets.
+	Add decoding for host buffer size command.
+	Fix OBEX header parsing.
+
+	Note:
+	This version needs at least bluez-libs-3.3
+
 ver 1.31:
 	Add Ericsson LMP decoding support.
 	Update sniff subrating decoding.
