@@ -1,3 +1,7 @@
+ver 1.33:
+	Add support for IPv6 decoding.
+	Add IPv6 connection support.
+
 ver 1.32:
 	Add decoding for link supervision timeout change event.
 	Add decoding for host controller to host flow control setting.
