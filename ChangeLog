@@ -1,3 +1,8 @@
+ver 1.34:
+	Add reading support for MacOS X packet logger format.
+	Add decoding for AFH host channel classification command.
+	Add decoding for QoS setup command.
+
 ver 1.33:
 	Add support for IPv6 decoding.
 	Add IPv6 connection support.
