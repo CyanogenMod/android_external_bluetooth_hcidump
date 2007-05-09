@@ -1,3 +1,7 @@
+ver 1.35:
+	Add partial decoding for eSCO setup.
+	Fix HCI command array size.
+
 ver 1.34:
 	Add reading support for MacOS X packet logger format.
 	Add decoding for AFH host channel classification command.
