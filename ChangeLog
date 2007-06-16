@@ -1,3 +1,8 @@
+ver 1.36:
+	Add missing HCI command definitions.
+	Add missing HCI event definitions.
+	Add missing HCI error definitions.
+
 ver 1.35:
 	Add partial decoding for eSCO setup.
 	Fix HCI command array size.

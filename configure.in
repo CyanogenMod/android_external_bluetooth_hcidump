@@ -1,7 +1,7 @@
 AC_PREREQ(2.50)
 AC_INIT()
 
-AM_INIT_AUTOMAKE(bluez-hcidump, 1.35)
+AM_INIT_AUTOMAKE(bluez-hcidump, 1.36)
 AM_CONFIG_HEADER(config.h)
 
 AM_MAINTAINER_MODE
