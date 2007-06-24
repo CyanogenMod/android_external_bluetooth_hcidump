@@ -1,3 +1,11 @@
+ver 1.37:
+	Add decoding for SCO packet flags.
+	Add decoding for more extended inquiry features.
+	Add missing HCI command and event decodings.
+
+	Note:
+	This version needs at least bluez-libs-3.12
+
 ver 1.36:
 	Add missing HCI command definitions.
 	Add missing HCI event definitions.
