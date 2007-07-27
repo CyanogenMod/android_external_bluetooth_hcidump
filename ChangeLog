@@ -1,3 +1,6 @@
+ver 1.38:
+	Add support for daemon mode.
+
 ver 1.37:
 	Add decoding for SCO packet flags.
 	Add decoding for more extended inquiry features.
