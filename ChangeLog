@@ -1,3 +1,9 @@
+ver 1.40:
+	Add HCI and LMP decoding support for Simple Pairing.
+
+	Note:
+	This version needs at least bluez-libs-3.14
+
 ver 1.39:
 	Add support for daemon discover protocol.
 	Fix device disconnect handling.
