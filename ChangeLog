@@ -1,3 +1,9 @@
+ver 1.41:
+	Improve decoding of HCI connection link type.
+	Fix handling of unsupported L2CAP config options.
+	Add full decoding of L2CAP RFC config option.
+	Reset to L2CAP basic mode when MTU config request is sent.
+
 ver 1.40:
 	Add HCI and LMP decoding support for Simple Pairing.
 
