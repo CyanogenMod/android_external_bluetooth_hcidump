@@ -1,3 +1,9 @@
+ver 1.42:
+	Decode the Read Link Policy Settings command.
+	Decode Default Link Policy Settings commands
+	Enable PIE by default if supported.
+	Don't optimize when debug is enabled.
+
 ver 1.41:
 	Improve decoding of HCI connection link type.
 	Fix handling of unsupported L2CAP config options.
