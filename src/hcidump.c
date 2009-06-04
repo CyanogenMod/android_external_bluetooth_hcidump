@@ -660,13 +660,14 @@ static int open_connection(char *addr, char *port)
 			((struct sockaddr_in *) &ss)->sin_addr.s_addr = htonl(INADDR_ANY);
 			((struct sockaddr_in *) &ss)->sin_port = 0;
 			break;
+#ifdef HAS_INET6
 		case AF_INET6:
 			memcpy(&((struct sockaddr_in6 *) &ss)->sin6_addr,
 						&in6addr_any, sizeof(in6addr_any));
 			((struct sockaddr_in6 *) &ss)->sin6_port = 0;
 			break;
+#endif
 		}
-
 		if (bind(sk, (struct sockaddr *) &ss, sizeof(ss)) < 0) {
 			perror("Can't bind socket");
 			close(sk);

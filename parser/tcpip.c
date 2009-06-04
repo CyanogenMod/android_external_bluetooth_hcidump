@@ -32,10 +32,14 @@
 #include <string.h>
 #include <sys/types.h>
 
-#include <net/ethernet.h>
+#include <net/ethertypes.h>
 #include <netinet/in.h>
 #include <netinet/ip.h>
+
+#ifdef HAS_INET6
 #include <netinet/ip6.h>
+#endif
+
 #include <netinet/if_ether.h>
 #include <arpa/inet.h>
 #include <netdb.h>
@@ -44,6 +48,7 @@
 
 void arp_dump(int level, struct frame *frm)
 {
+#if 0
 	int i;
 	char buf[20];
 	struct sockaddr_in sai;
@@ -68,11 +73,14 @@ void arp_dump(int level, struct frame *frm)
 	printf("(%s)\n", buf);
 	frm->ptr += sizeof(struct ether_arp);
 	frm->len -= sizeof(struct ether_arp);
+#endif
 	raw_dump(level, frm);		// not needed.
+
 }
 
 void ip_dump(int level, struct frame *frm)
 {
+#if 0
 	char src[50], dst[50];
 	struct ip *ip = (struct ip *) (frm->ptr);
 	uint8_t proto;
@@ -136,6 +144,6 @@ void ip_dump(int level, struct frame *frm)
 		printf("Unknown Protocol: 0x%02x\n", ip->ip_p);
 		break;
 	}
-
+#endif
 	raw_dump(level, frm);
 }

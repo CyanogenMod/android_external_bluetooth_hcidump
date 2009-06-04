@@ -33,7 +33,7 @@
 #include <string.h>
 #include <sys/types.h>
 
-#include <net/ethernet.h>
+#include <net/ethertypes.h>
 
 #include "parser.h"
 
