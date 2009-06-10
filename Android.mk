@@ -1,3 +1,6 @@
+ifneq ($(TARGET_SIMULATOR),true)
+ifeq ($(BOARD_HAVE_BLUETOOTH),true)
+
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
@@ -37,3 +40,5 @@ LOCAL_MODULE_TAGS := debug
 LOCAL_MODULE:=hcidump
 
 include $(BUILD_EXECUTABLE)
+endif
+endif
