@@ -922,6 +922,17 @@ static inline void setup_sync_conn_dump(int level, struct frame *frm)
 		btohs(cp->pkt_type));
 }
 
+static inline void accept_sync_conn_req_dump(int level, struct frame *frm)
+{
+	accept_sync_conn_req_cp *cp = frm->ptr;
+	char addr[18];
+
+	p_indent(level, frm);
+	p_ba2str(&cp->bdaddr, addr);
+	printf("bdaddr %s voice_setting 0x%4.4x pkt_type 0x%4.4x\n",
+		addr, btohs(cp->voice_setting), btohs(cp->pkt_type));
+}
+
 static inline void hold_mode_dump(int level, struct frame *frm)
 {
 	hold_mode_cp *cp = frm->ptr;
@@ -1385,8 +1396,10 @@ static inline void command_dump(int level, struct frame *frm)
 			return;
 		case OCF_CREATE_CONN_CANCEL:
 		case OCF_REMOTE_NAME_REQ_CANCEL:
-		case OCF_ACCEPT_SYNC_CONN_REQ:
 			bdaddr_command_dump(level + 1, frm);
+			return;
+		case OCF_ACCEPT_SYNC_CONN_REQ:
+			accept_sync_conn_req_dump(level + 1, frm);
 			return;
 		case OCF_ADD_SCO:
 		case OCF_SET_CONN_PTYPE:
