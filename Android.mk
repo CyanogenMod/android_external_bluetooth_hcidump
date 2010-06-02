@@ -5,7 +5,7 @@ LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_C_INCLUDES:= \
-	$(call include-path-for,bluez)/include/ \
+	$(call include-path-for,bluez)/lib/ \
 
 LOCAL_CFLAGS:= \
 	-DVERSION=\"1.42\"
