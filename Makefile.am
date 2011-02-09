@@ -5,6 +5,7 @@ parser_sources =  parser/parser.h parser/parser.c \
 					parser/lmp.c \
 					parser/hci.c \
 					parser/l2cap.c \
+					parser/att.c \
 					parser/sdp.h parser/sdp.c \
 					parser/rfcomm.h parser/rfcomm.c \
 					parser/bnep.c \
